@@ -1,0 +1,17 @@
+<div class="col-12" [@fadeIn]>
+    <a class="boton_acti btn btn-success" [@marcar]="state" (click)="cambiarEstado(state)">
+        <span *ngIf="state=='inactive'">Boton Inactivo</span>
+        <span *ngIf="state=='active'">Boton Activo</span>
+    </a>
+    <hr>
+    <!-- //animaciones css3 -->
+    <a class="boton-transiciones">Transiciones</a>
+
+    <div class="clearfix"></div>
+    <br>
+    <div class="caja_animada">
+
+    </div>
+    <hr>
+    <main-email></main-email>
+</div>

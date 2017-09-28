@@ -1,0 +1,46 @@
+<div class="col-6">
+    <h1>{{title}}</h1>
+    <div class="alert alert-success" *ngIf="status=='success'">Se ha actualizado tu informacion correctamente</div>
+    <div class="alert alert-danger" *ngIf="status=='error'">Algo ha pasado, intenta de nuevo</div>
+
+    <form #userEditForm="ngForm" (ngSubmit)="onSubmit()" class="col-lg-10">
+        <div class="row py-2 ml-2">
+            <div class="col-3">
+                <label>Nombre:</label>
+            </div>
+            <div class="col mr-5">
+                <input type="text" class="form-control" name="name" #name="ngModel" [(ngModel)]="usu.name" required pattern="[a-zA-Z]+">
+                <span *ngIf="name.touched && !name.valid">El nombre es incorrecto</span>
+            </div>
+        </div>
+        <div class="row py-2 ml-2">
+            <div class="col-3">
+                <label>Apellidos:</label>
+            </div>
+            <div class="col mr-5">
+                <input type="text" class="form-control" name="surname" #surname="ngModel" [(ngModel)]="usu.surname" required pattern="[a-zA-Z]+">
+                <span *ngIf="surname.touched && !surname.valid">El apellido es incorrecto</span>
+            </div>
+        </div>
+        <div class="row py-2 ml-2">
+            <div class="col-3">
+                <label>Correo:</label>
+            </div>
+            <div class="col mr-5">
+                <input type="email" class="form-control" name="email" #email="ngModel" [(ngModel)]="usu.email" required pattern="^[a-zA-Z0-9_.]+@[a-zA-Z0-9]+\.[a-zA-Z0-9-.]+$">
+                <span *ngIf="email.touched && !email.valid">El correo es incorrecto</span>
+            </div>
+        </div>
+        <div class="row py-2 ml-2">
+            <div class="col-3">
+                <label>Fecha:</label>
+            </div>
+            <div class="col mr-5">
+                <input type="text" class="form-control" id="date" name="fecha" #fecha="ngModel" [(ngModel)]="usu.fecha">
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <input type="submit" value="Guardar" class="btn btn-success" [disabled]="!userEditForm.form.valid">
+        </div>
+    </form>
+</div>

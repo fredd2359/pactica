@@ -1,0 +1,18 @@
+<div class="col-6" [@fadeIn]>
+    <div class="alert alert-success" *ngIf="status=='success'">Login correcto</div>
+    <div class="alert alert-danger" *ngIf="status=='error'">Los datos no coinciden</div>
+
+    <form class="col-md-7" #loginform="ngForm" (ngSubmit)="onSubmit()">
+        <p>
+            <label>Correo electronico</label>
+            <input type="email" name="email" #email="ngModel" [(ngModel)]="usu.email" class="form-control" required/>
+            <span *ngIf="!email.valid && email.touched">El email es obligatorio</span>
+        </p>
+        <p>
+            <label>Contraseña</label>
+            <input type="password" name="password" #password="ngModel" [(ngModel)]="usu.password" class="form-control" required/>
+            <span *ngIf="!password.valid && password.touched">La contraseña es obligatoria</span>
+        </p>
+        <input type="submit" value="Entrar" class="btn btn-success" />
+    </form>
+</div>

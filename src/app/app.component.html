@@ -1,20 +1,45 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{title}}!
-  </h1>
-  <img width="300" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+<nav class="navbar sticky-top navbar-dark bg-dark navbar-expand-md">
+    <a class="navbar-brand " href="/home">
+        <img src="../assets/img/logo.svg" width="30" height="30" class="d-inline-block align-top" alt="Logo">
+    </a>
 
+    <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navegador" aria-controls="navegador" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+
+    <div class="collapse navbar-collapse" id="navegador">
+        <div class="navbar-nav text-center">
+            <a class="nav-item nav-link" [routerLink]="['/home']" [routerLinkActive]="['active']">Home<span class="sr-only">(current)</span></a>
+            <a *ngIf="!identity" class="nav-item nav-link" [routerLink]="['/usuario']" [routerLinkActive]="['active']">Profile</a>
+            <a *ngIf="!identity" class="nav-item nav-link" [routerLink]="['/login']" [routerLinkActive]="['active']">Login</a>
+            <a class="nav-item nav-link" [routerLink]="['/contacto']" [routerLinkActive]="['active']">Contacto</a>
+            <ul *ngIf="identity" class="justify-content-end">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" style="color:aquamarine" data-toggle="dropdown" href="#">
+                        {{identity.name}}    
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li *ngIf="identity && identity.role=='ROLE_ADMIN'">
+                            <a [routerLink]="['/admin-main']">
+                                <span class="glyphicon glyphicon-tasks"></span> Administración
+                            </a>
+                        </li>
+                        <li>
+                            <a [routerLink]="['/mis-datos']">
+                                <span class="glyphicon glyphicon-cog"></span> Mis datos
+                            </a>
+                        </li>
+                        <li>
+                            <a class="pointer" (click)="logout()">
+                                <span class="glyphicon glyphicon-log-out"></span> Salir
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<router-outlet></router-outlet>

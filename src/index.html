@@ -1,14 +1,30 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>Pactica</title>
-  <base href="/">
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+<head>
+    <meta charset="utf-8">
+    <title>Pactica</title>
+    <base href="/">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/bootstrap.css">
+    <link rel="stylesheet" href="assets/css/bootstrap-datepicker.css">
 </head>
-<body>
-  <app-root></app-root>
+
+<body data-target="#espia">
+    <app-root></app-root>
+
+
+    <!-- Load the CDN first-->
+    <script src="//code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <!--If CDN fails to load, serve up the local version-->
+    <script>
+        window.jQery || document.write('<script src ="/assets/js/jquery-3.2.1.min.js"><\/script>')
+    </script>
+    <script src="assets/js/bootstrap-datepicker.min.js"></script>
+    <script src="assets/js/script.js"></script>
 </body>
+
 </html>

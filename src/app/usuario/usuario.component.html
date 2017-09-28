@@ -1,0 +1,54 @@
+<div class="container" [@fadeIn]>
+    <h1 class="display">Usuarios</h1>
+    <div class="alert alert-success" *ngIf="status=='success'">Registro completado correctamente</div>
+    <div class="alert alert-danger" *ngIf="status=='error'">No se ha registrado correctamente</div>
+    <form #formusuario="ngForm" class="form-horizontal bg-light" (ngSubmit)="onSubmit(); formusuario.reset();" id="formu">
+        <div class="row py-2 ml-2">
+            <div class="col-3">
+                <label>Nombre:</label>
+            </div>
+            <div class="col mr-5">
+                <input type="text" class="form-control" name="name" #name="ngModel" [(ngModel)]="usu.name" required pattern="[a-zA-Z]+">
+                <span *ngIf="name.touched && !name.valid">El nombre es incorrecto</span>
+            </div>
+        </div>
+        <div class="row py-2 ml-2">
+            <div class="col-3">
+                <label>Apellidos:</label>
+            </div>
+            <div class="col mr-5">
+                <input type="text" class="form-control" name="surname" #surname="ngModel" [(ngModel)]="usu.surname" required pattern="[a-zA-Z]+">
+                <span *ngIf="surname.touched && !surname.valid">El apellido es incorrecto</span>
+            </div>
+        </div>
+        <div class="row py-2 ml-2">
+            <div class="col-3">
+                <label>Correo:</label>
+            </div>
+            <div class="col mr-5">
+                <input type="email" class="form-control" name="email" #email="ngModel" [(ngModel)]="usu.email" required pattern="^[a-zA-Z0-9_.]+@[a-zA-Z0-9]+\.[a-zA-Z0-9-.]+$">
+                <span *ngIf="email.touched && !email.valid">El correo es incorrecto</span>
+            </div>
+        </div>
+        <div class="row py-2 ml-2">
+            <div class="col-3">
+                <label>Contraseña:</label>
+            </div>
+            <div class="col mr-5">
+                <input type="password" class="form-control" name="password" #password="ngModel" [(ngModel)]="usu.password" minlength="6" maxlength="16">
+                <span *ngIf="password.touched && !password.valid">La contraseña debe ser mayor entre 6-16 caracteres</span>
+            </div>
+        </div>
+        <div class="row py-2 ml-2">
+            <div class="col-3">
+                <label>Fecha:</label>
+            </div>
+            <div class="col mr-5">
+                <input type="text" class="form-control" id="date" name="fecha" #fecha="ngModel" [(ngModel)]="usu.fecha">
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <input type="submit" value="Guardar" class="btn btn-success" [disabled]="!formusuario.form.valid">
+        </div>
+    </form>
+</div>
